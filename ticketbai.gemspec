@@ -3,15 +3,18 @@
 require_relative 'lib/ticketbai/version'
 
 Gem::Specification.new do |spec|
+  spec.platform = Gem::Platform::RUBY
   spec.name = 'ticketbai'
   spec.version = Ticketbai::VERSION
-  spec.authors = ['Fran Vega']
-  spec.email = ['franvegadev@gmail.com']
+  spec.summary = 'Library to create, sign and send TicketBAI files to the Regional Treasury'
 
-  spec.summary = 'Library to wrap Ticketbai'
-  spec.homepage = 'https://github.com/ecommerce-ventures/ticketbai'
+  spec.required_ruby_version = '>= 2.6.5'
+
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.6.9'
+
+  spec.author = 'Fran Vega'
+  spec.email = 'franvegadev@gmail.com'
+  spec.homepage = 'https://github.com/ecommerce-ventures/ticketbai'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/ecommerce-ventures/ticketbai'
@@ -28,14 +31,15 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  # Uncomment to register a new dependency of your gem
   spec.add_dependency 'digest-crc'
-  spec.add_dependency 'faraday', '0.15.4'
-  spec.add_dependency 'json'
-  spec.add_dependency 'nokogiri'
-  spec.add_dependency 'zlib'
+  spec.add_dependency 'faraday', '~> 0.15.4'
+  spec.add_dependency 'nokogiri', '~> 1.10.9'
 
   spec.add_development_dependency 'webmock', '~> 3.5'
+  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'bundler', '~> 1.10'
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html

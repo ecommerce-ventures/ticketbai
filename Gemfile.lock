@@ -3,10 +3,8 @@ PATH
   specs:
     ticketbai (0.1.0)
       digest-crc
-      faraday (= 0.15.4)
-      json
-      nokogiri
-      zlib
+      faraday (~> 0.15.4)
+      nokogiri (~> 1.10.9)
 
 GEM
   remote: https://rubygems.org/
@@ -22,15 +20,14 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     hashdiff (1.0.1)
-    json (2.6.1)
+    mini_portile2 (2.4.0)
     multipart-post (2.1.1)
-    nokogiri (1.13.1-x86_64-darwin)
-      racc (~> 1.4)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
     public_suffix (4.0.6)
-    racc (1.6.0)
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.2.0)
@@ -65,18 +62,17 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    zlib (2.1.1)
 
 PLATFORMS
-  x86_64-darwin-19
-  x86_64-darwin-20
+  ruby
 
 DEPENDENCIES
-  rake (~> 13.0)
+  bundler (~> 1.10)
+  rake
   rspec (~> 3.0)
-  rubocop (~> 1.21)
+  rubocop
   ticketbai!
   webmock (~> 3.5)
 
 BUNDLED WITH
-   2.2.32
+   1.17.3
