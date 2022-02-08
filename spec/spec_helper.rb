@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec'
+require 'webmock/rspec'
 require 'nokogiri'
 require 'digest/crc8'
 
