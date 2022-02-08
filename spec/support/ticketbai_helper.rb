@@ -58,7 +58,6 @@ RSpec.shared_context("with document") do
       breakdown_type: breakdown_type_node(breakdown_type_params.merge!(receiver_spain))
     )
   end
-
 end
 
 def issuer_node(params)

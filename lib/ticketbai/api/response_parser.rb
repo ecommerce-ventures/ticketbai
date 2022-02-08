@@ -18,7 +18,7 @@ module Ticketbai
       end
 
       def registries
-        return [] unless @raw_response.body.present?
+        return [] unless @raw_response.body
 
         Nokogiri::XML(@raw_response.body).css('Registros Registro').map { |attributes| Registry.new(attributes) }
       end
