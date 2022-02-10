@@ -10,7 +10,7 @@ module Ticketbai
       end
 
       def uploaded
-        @attributes.at_css('CodigoErrorRegistro').blank?
+        @attributes.at_css('CodigoErrorRegistro').nil?
       end
 
       def error_code
