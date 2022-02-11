@@ -2,16 +2,16 @@ module Ticketbai
   module Nodes
     class BreakdownType
       # Exemption causes (CausaExencion):
-      # E1: Exenta por el artículo 20 de la Norma Foral del IVA
-      # E2: Exenta por el artículo 21 de la Norma Foral del IVA
-      # E3: Exenta por el artículo 22 de la Norma Foral del IVA
-      # E4: Exenta por el artículo 23 y 24 de la Norma Foral del IVA
-      # E5: Exenta por el artículo 25 de la Norma Foral del IVA
+      # E1: Exenta por el articulo 20 de la Norma Foral del IVA
+      # E2: Exenta por el articulo 21 de la Norma Foral del IVA
+      # E3: Exenta por el articulo 22 de la Norma Foral del IVA
+      # E4: Exenta por el articulo 23 y 24 de la Norma Foral del IVA
+      # E5: Exenta por el articulo 25 de la Norma Foral del IVA
       # E6: Exenta por otra causa
 
       # Type of non-exempt (TipoNoExenta):
-      # S1: Sin inversión del sujeto pasivo
-      # S2: Con inversión del sujeto pasivo
+      # S1: Sin inversion del sujeto pasivo
+      # S2: Con inversion del sujeto pasivo
       def initialize(args = {})
         @receiver_country = args[:receiver_country]
         @invoice_amount = args[:invoice_amount]

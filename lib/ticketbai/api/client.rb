@@ -1,4 +1,3 @@
-
 module Ticketbai
   module Api
     class Client

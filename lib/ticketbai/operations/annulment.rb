@@ -10,12 +10,12 @@ module Ticketbai
       OPERATION_NAME = :annulment
 
       ###
-      # @param issuing_company_nif:  NIF of the taxpayer's company
-      # @param issuing_company_name: Name of the taxpayer's company
-      # @param invoice_serial: Invoices serial number
-      # @param invoice_number: Invoices number
-      # @param invoice_date: Invoices emission date (Format: d-m-Y)
-      # @param company_cert: The name of the certificate to be used for issuance
+      # @param [String] issuing_company_nif NIF of the taxpayer's company
+      # @param [String] issuing_company_name Name of the taxpayer's company
+      # @param [String] invoice_serial Invoice's serial number
+      # @param [String] invoice_number Invoice's number
+      # @param [String] invoice_date Invoices emission date (Format: d-m-Y)
+      # @param [String] company_cert The name of the certificate to be used for issuance
       ###
       def initialize(**args)
         @issuing_company_nif = args[:issuing_company_nif]

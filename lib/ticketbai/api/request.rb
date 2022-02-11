@@ -10,8 +10,9 @@ module Ticketbai
       TEST_QUERY_ENDPOINT = 'https://pruesarrerak.bizkaia.eus/N3B4001M/kontsulta'.freeze
 
       # OPERATIONS
-      # issuance_unsigned: (invoices issued without guarantor software): When a TicketBai file has been rejected due to a poorly generated XML result, taking into account
-      #            that the TicketBAI file cannot be generated again and that its information must be sent, it must be done by indicating the subchapter Invoices issued no guarantor software
+      # issuance_unsigned: (invoices issued without guarantor software): When a TicketBai file has been rejected due to a poorly generated XML result,
+      #                    taking into account that the TicketBAI file cannot be generated again and that its information must be sent, it must be done by
+      #                    indicating the subchapter Invoices issued no guarantor software
       # issuance:  New invoices issued that we want to register using the guarantor software
       # annulment: Cancel invoices that we have previously registered using the guarantor software
       SUPPORTED_OPERATIONS = [
@@ -32,11 +33,11 @@ module Ticketbai
       LROE_CHAPTER = '1'.freeze
 
       ###
-      # @param issued_invoices: Ticketbai xml file(s) of issuance or annulment invoices (Max 1000)
-      # @param company_name: Name of the taxpayer's company
-      # @param year: Fiscal year
-      # @param certificate_name: Taxpayer's certificate name
-      # @param operation: Operation name
+      # @param [Array] issued_invoices TicketBAI XML file(s) string (Max: 1000)
+      # @param [String] company_name Name of the taxpayer's company
+      # @param [String] year Fiscal year
+      # @param [Symbol] certificate_name Taxpayer's certificate name
+      # @param [Symbol] operation Operation name
       ###
       def initialize(issued_invoices:, nif:, company_name:, year:, certificate_name:, operation:)
         raise ArgumentError, "Unsupported operation: #{operation}" unless SUPPORTED_OPERATIONS.include? operation.downcase.to_sym
@@ -113,10 +114,10 @@ module Ticketbai
 
       def lroe_header_data
         {
-          "con": 'LROE',
-          "apa": subchapter,
-          "inte": { "nif": @nif, "nrs": @company_name },
-          "drs": { "mode": LROE_MODEL, "ejer": @year }
+          con: 'LROE',
+          apa: subchapter,
+          inte: { nif: @nif, nrs: @company_name },
+          drs: { mode: LROE_MODEL, ejer: @year }
         }.to_json
       end
     end

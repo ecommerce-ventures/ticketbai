@@ -15,20 +15,20 @@ module Ticketbai
       OPERATION_NAME = :issuance_unsigned
 
       ###
-      # @param receiver_nif: Spanish NIF or official identification document in case of being another country
-      # @param receiver_name: Name of the receiver
-      # @param receiver_country (string): Country code of the receiver (Ex: ES|DE)
-      # @param receiver_in_eu (boolean): The receiver residence is in Europe?
-      # @param invoice_serial: Invoices serial number
-      # @param invoice_number: Invoices number
-      # @param invoice_date: Invoices emission date (Format: d-m-Y)
-      # @param simplified_invoice (boolean): is a simplified invoice?
-      # @param invoice_description: Invoices description text
-      # @param invoice_total: Total invoice amount
-      # @param invoice_vat_key: Key of the VAT regime
-      # @param invoice_amount: Taxable base of the invoice
-      # @param invoice_vat (float): Invoice VAT (Ex: 21.0)
-      # @param invoice_vat_total: Invoices number
+      # @param [String] receiver_nif Spanish NIF or official identification document in case of being another country
+      # @param [String] receiver_name  Name of the receiver
+      # @param [String] receiver_country Country code of the receiver (Ex: ES|DE)
+      # @param [Boolean] receiver_in_eu The receiver residence is in Europe?
+      # @param [String] invoice_serial Invoices serial number
+      # @param [String] invoice_number Invoices number
+      # @param [String] invoice_date Invoices emission date (Format: d-m-Y)
+      # @param [Boolean] simplified_invoice is a simplified invoice?
+      # @param [String] invoice_description Invoices description text
+      # @param [String] invoice_total Total invoice amount
+      # @param [String] invoice_vat_key Key of the VAT regime
+      # @param [String] invoice_amount Taxable base of the invoice
+      # @param [Float] invoice_vat Invoice VAT (Ex: 21.0)
+      # @param [String] invoice_vat_total Invoices number
       ###
       def initialize(**args)
         @receiver_nif = args[:receiver_nif].strip

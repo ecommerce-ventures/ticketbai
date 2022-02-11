@@ -1,13 +1,12 @@
 module Ticketbai
   module Nodes
     class Receiver
-      ID_TYPES = {
-        '02' => 'NIF-IVA',
-        '03' => 'Pasaporte',
-        '04' => 'Documento oficial de identificación expedido por el país o territorio de residencia',
-        '05' => 'Certificado de residencia',
-        '06' => 'Otro documento probatorio'
-      }.freeze
+      # ID TYPES
+      # 02: NIF-IVA
+      # 03: Pasaporte
+      # 04: Documento oficial de identificacion expedido por el pais o territorio de residencia
+      # 05: Certificado de residencia
+      # 06: Otro documento probatorio
 
       def initialize(args = {})
         @receiver_country = args[:receiver_country]

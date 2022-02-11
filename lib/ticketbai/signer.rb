@@ -1,7 +1,7 @@
 require 'openssl'
 require 'base64'
-require "rexml/document"
-require "rexml/xpath"
+require 'rexml/document'
+require 'rexml/xpath'
 require 'securerandom'
 require 'date'
 
@@ -188,7 +188,7 @@ module Ticketbai
             t.send('ds:Transform', { 'Algorithm' => C14N })
           end
           r.send('ds:DigestMethod', { 'Algorithm' => SHA256 })
-          r.send('ds:DigestValue', digest_document(signed_props_element, SHA256, true))
+          r.send('ds:DigestValue', digest_document(signed_props_element, SHA256))
         end
 
         si.send('ds:Reference', { 'Id' => 'ReferenceKeyInfo', 'URI' => "#KeyInfoId-xmldsig-#{uuid}" }) do |r|
@@ -196,7 +196,7 @@ module Ticketbai
             t.send('ds:Transform', { 'Algorithm' => C14N })
           end
           r.send('ds:DigestMethod', { 'Algorithm' => SHA256 })
-          r.send('ds:DigestValue', digest_document(key_info_element, SHA256, true))
+          r.send('ds:DigestValue', digest_document(key_info_element, SHA256))
         end
 
         si.send('ds:Reference', { 'Id' => "xmldsig-#{uuid}-ref0", 'Type' => 'http://www.w3.org/2000/09/xmldsig#Object', 'URI' => '' }) do |r|
@@ -212,11 +212,11 @@ module Ticketbai
       builder.doc
     end
 
-    def digest_document(doc, digest_algorithm = SHA256, strip = false)
-      compute_digest(canonicalize_document(doc, strip), algorithm(digest_algorithm))
+    def digest_document(doc, digest_algorithm = SHA256)
+      compute_digest(canonicalize_document(doc), algorithm(digest_algorithm))
     end
 
-    def canonicalize_document(doc, strip = false)
+    def canonicalize_document(doc)
       doc.canonicalize(canon_algorithm(C14N), NAMESPACES.split)
     end
 
