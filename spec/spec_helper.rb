@@ -2,8 +2,6 @@
 
 require 'rspec'
 require 'webmock/rspec'
-require 'nokogiri'
-require 'digest/crc8'
 
 Dir["#{File.expand_path("../", __dir__)}/spec/support/**/*.rb"].each.each { |f| require f }
 

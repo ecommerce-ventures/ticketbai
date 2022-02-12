@@ -4,6 +4,7 @@ require 'rexml/document'
 require 'rexml/xpath'
 require 'securerandom'
 require 'date'
+require 'nokogiri'
 
 module Ticketbai
   class Signer
