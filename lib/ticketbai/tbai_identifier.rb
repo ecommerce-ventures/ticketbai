@@ -16,8 +16,8 @@ module Ticketbai
     end
 
     ###
+    # Builds the TBAI Identifier with the following format: TBAI-NIF-FechaExpedicionFactura(DDMMAA)-SignatureValue(13)-CRC(3)
     # @return [String] The TBAI identifier.
-    # Format: TBAI-NIF-FechaExpedicionFactura(DDMMAA)-SignatureValue(13)-CRC(3)
     ###
     def create
       identifier = [ID, @nif, @invoice_date, @signature_value].join('-')

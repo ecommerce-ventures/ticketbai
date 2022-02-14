@@ -1,7 +1,7 @@
-RSpec.describe 'Operations::Issuance' do
+RSpec.describe Ticketbai::Operations::Issuance do
   describe '#create' do
     let(:issuance) do
-      Ticketbai::Operations::Issuance.new(
+      described_class.new(
         issuing_company_nif: 'B12345678',
         issuing_company_name: 'Test SL',
         receiver_nif: 'B87654321',

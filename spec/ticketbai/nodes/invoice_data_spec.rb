@@ -1,29 +1,31 @@
-RSpec.describe 'InvoiceData#build_xml' do
-  let(:params) do
-    {
-      invoice_description: 'Descripción de la factura',
-      invoice_total: 215.0,
-      invoice_vat_key: '01'
-    }
-  end
+RSpec.describe Ticketbai::Nodes::InvoiceData do
+  describe '#build_xml' do
+    let(:params) do
+      {
+        invoice_description: 'Descripción de la factura',
+        invoice_total: 215.0,
+        invoice_vat_key: '01'
+      }
+    end
 
-  it 'should build the invoice data' do
-    # Act
-    node_doc = node_doc_builder(params)
+    it 'should build the invoice data node' do
+      # Act
+      node_doc = node_doc_builder(params)
 
-    # Assert
-    expect(node_doc.delete!(" \t\r\n")).to eql('
-      <?xml version="1.0" encoding="UTF-8"?>
-      <DatosFactura>
-        <DescripcionFactura>Descripción de la factura</DescripcionFactura>
-        <ImporteTotalFactura>215.0</ImporteTotalFactura>
-        <Claves>
-          <IDClave>
-            <ClaveRegimenIvaOpTrascendencia>01</ClaveRegimenIvaOpTrascendencia>
-          </IDClave>
-        </Claves>
-      </DatosFactura>
-    '.delete!(" \t\r\n"))
+      # Assert
+      expect(node_doc.delete!(" \t\r\n")).to eql('
+        <?xml version="1.0" encoding="UTF-8"?>
+        <DatosFactura>
+          <DescripcionFactura>Descripción de la factura</DescripcionFactura>
+          <ImporteTotalFactura>215.0</ImporteTotalFactura>
+          <Claves>
+            <IDClave>
+              <ClaveRegimenIvaOpTrascendencia>01</ClaveRegimenIvaOpTrascendencia>
+            </IDClave>
+          </Claves>
+        </DatosFactura>
+      '.delete!(" \t\r\n"))
+    end
   end
 
   private
