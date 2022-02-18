@@ -33,7 +33,7 @@ module Ticketbai
       def initialize(**args)
         @receiver_nif = args[:receiver_nif].strip
         @receiver_name = args[:receiver_name]
-        @receiver_country = args[:receiver_country]&.upcase.presence || 'ES'
+        @receiver_country = args[:receiver_country]&.upcase || 'ES'
         @receiver_in_eu = args[:receiver_in_eu]
         @invoice_serial = args[:invoice_serial]
         @invoice_number = args[:invoice_number]
@@ -52,7 +52,7 @@ module Ticketbai
       end
 
       def build_document
-        if @receiver_nif.present? && @receiver_name.present?
+        if @receiver_nif && @receiver_name
           @receiver = Ticketbai::Nodes::Receiver.new(receiver_country: @receiver_country, receiver_nif: @receiver_nif, receiver_name: @receiver_name)
         end
 
