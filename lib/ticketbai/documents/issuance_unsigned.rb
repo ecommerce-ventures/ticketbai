@@ -38,7 +38,7 @@ module Ticketbai
       def create
         builder = Nokogiri::XML::Builder.new(encoding: Encoding::UTF_8.to_s) do |xml|
           xml.TicketBai do
-            @receiver.build_xml(xml) if @receiver.present?
+            @receiver&.build_xml(xml)
             @invoice_header.build_xml(xml)
             @invoice_data.build_xml(xml)
             @breakdown_type.build_xml(xml)
