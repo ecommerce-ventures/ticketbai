@@ -27,7 +27,7 @@ module Ticketbai
       def connection
         Faraday.new(ssl: ssl) do |builder|
           builder.request :multipart
-          builder.response(:logger) unless Ticketbai.test?
+          builder.response :logger, Ticketbai.logger if Ticketbai.debug
           builder.adapter Faraday.default_adapter
         end
       end

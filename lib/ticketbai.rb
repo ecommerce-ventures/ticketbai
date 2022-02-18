@@ -69,5 +69,21 @@ module Ticketbai
     def live?
       mode == :live
     end
+
+    def logger
+      instance_variable_get :@logger
+    end
+
+    def logger=(logger)
+      instance_variable_set :@logger, logger
+    end
+
+    def debug
+      instance_variable_get(:@debug) == true
+    end
+
+    def debug=(debug)
+      instance_variable_set :@debug, debug
+    end
   end
 end
