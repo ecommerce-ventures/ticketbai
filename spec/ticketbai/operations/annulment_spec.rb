@@ -12,7 +12,7 @@ RSpec.describe Ticketbai::Operations::Annulment do
     end
 
     it 'has xml_doc and signature_value keys' do
-       expect(annulment).to include(:xml_doc, :signature_value)
+      expect(annulment).to include(:xml_doc, :signature_value)
     end
 
     it 'returns a signature value 100 characters long' do

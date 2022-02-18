@@ -1,0 +1,38 @@
+<Destinatarios>
+  <IDDestinatario>
+    <NIF>B87654321</NIF>
+    <ApellidosNombreRazonSocial>Foo SL</ApellidosNombreRazonSocial>
+  </IDDestinatario>
+</Destinatarios>
+<CabeceraFactura>
+  <SerieFactura>2021</SerieFactura>
+  <NumFactura>000002</NumFactura>
+  <FechaExpedicionFactura>10-11-2022</FechaExpedicionFactura>
+</CabeceraFactura>
+<DatosFactura>
+  <DescripcionFactura>invoice description text</DescripcionFactura>
+  <ImporteTotalFactura>150.30</ImporteTotalFactura>
+  <Claves>
+    <IDClave>
+      <ClaveRegimenIvaOpTrascendencia>01</ClaveRegimenIvaOpTrascendencia>
+    </IDClave>
+  </Claves>
+</DatosFactura>
+<TipoDesglose>
+  <DesgloseFactura>
+    <Sujeta>
+      <NoExenta>
+        <DetalleNoExenta>
+          <TipoNoExenta>S1</TipoNoExenta>
+          <DesgloseIVA>
+            <DetalleIVA>
+              <BaseImponible>130.10</BaseImponible>
+              <TipoImpositivo>21.0</TipoImpositivo>
+              <CuotaImpuesto>25.11</CuotaImpuesto>
+            </DetalleIVA>
+          </DesgloseIVA>
+        </DetalleNoExenta>
+      </NoExenta>
+    </Sujeta>
+  </DesgloseFactura>
+</TipoDesglose>
