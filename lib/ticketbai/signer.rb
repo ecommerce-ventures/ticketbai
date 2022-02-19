@@ -242,9 +242,11 @@ module Ticketbai
 
     def algorithm(element)
       algorithm = element
-      if algorithm.is_a?(REXML::Element)
+
+      case algorithm
+      when REXML::Element
         algorithm = element.attribute('Algorithm').value
-      elsif algorithm.is_a?(Nokogiri::XML::Element)
+      when Nokogiri::XML::Element
         algorithm = element.xpath('//@Algorithm', 'xmlns:ds' => 'http://www.w3.org/2000/09/xmldsig#').first.value
       end
 

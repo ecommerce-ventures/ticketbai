@@ -1,22 +1,14 @@
 module Ticketbai
   module Operations
     class Issuance < Operation
-      attr_reader :company_cert
-      # Sujetos > Emisor
-      attr_reader :issuing_company_nif, :issuing_company_name
-      # Sujetos > Destinatario
-      attr_reader :receiver_nif, :receiver_name
-      # Factura > CabeceraFactura
-      attr_reader :invoice_serial, :invoice_number, :invoice_date, :invoice_time, :simplified_invoice
-      # Factura > DatosFactura
-      attr_reader :invoice_description, :invoice_total, :invoice_vat_key
-      # Factura > TipoDesglose
-      attr_reader :invoice_amount, :invoice_vat, :invoice_vat_total
-      # HuellaTBAI > EncadenamientoFacturaAnterior
-      attr_reader :prev_invoice_number, :prev_invoice_signature, :prev_invoice_date
-
       DEFAULT_VAT_KEY = '01'.freeze
       OPERATION_NAME = :issuance
+
+      ATTRIBUTES = %i[company_cert issuing_company_nif issuing_company_name receiver_nif receiver_name receiver_country receiver_in_eu invoice_serial
+                      invoice_number invoice_date invoice_time simplified_invoice invoice_description invoice_total invoice_vat_key
+                      invoice_amount invoice_vat invoice_vat_total prev_invoice_number prev_invoice_signature prev_invoice_date].freeze
+
+      attr_accessor(*ATTRIBUTES)
 
       ###
       # @param [String] issuing_company_nif NIF of the taxpayer's company
@@ -42,28 +34,10 @@ module Ticketbai
       # @param [Symbol] company_cert: The name of the certificate to be used for issuance
       ###
       def initialize(**args)
-        @issuing_company_nif = args[:issuing_company_nif]
-        @issuing_company_name = args[:issuing_company_name]
-        @receiver_nif = args[:receiver_nif]&.strip
-        @receiver_name = args[:receiver_name]
-        @receiver_country = args[:receiver_country]&.upcase || 'ES'
-        @receiver_in_eu = args[:receiver_in_eu]
-        @invoice_serial = args[:invoice_serial]
-        @invoice_number = args[:invoice_number]
-        @invoice_date = args[:invoice_date]
-        @invoice_time = args[:invoice_time]
-        @simplified_invoice = args[:simplified_invoice]
-        @invoice_description = args[:invoice_description]
-        @invoice_total = args[:invoice_total]
-        @invoice_vat_key = args[:invoice_vat_key]
-        @invoice_amount = args[:invoice_amount]
-        @invoice_vat = args[:invoice_vat]
-        @invoice_vat_total = args[:invoice_vat_total]
-        @prev_invoice_number = args[:prev_invoice_number]
-        @prev_invoice_signature = args[:prev_invoice_signature]
-        @prev_invoice_date = args[:prev_invoice_date]
+        args[:receiver_nif]&.strip!
+        args[:receiver_country] = args[:receiver_country]&.upcase || 'ES'
 
-        @company_cert = Ticketbai.config.certificates[args[:company_cert]]
+        super(args)
       end
 
       def build_document

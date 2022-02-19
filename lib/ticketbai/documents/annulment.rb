@@ -6,15 +6,17 @@ module Ticketbai
         'xmlns:T' => 'urn:ticketbai:anulacion'
       }.freeze
 
+      ATTRIBUTES = %i[issuer invoice_header software].freeze
+
+      attr_accessor(*ATTRIBUTES)
+
       ###
       # @param [Ticketbai::Nodes::Isuer] issuer
       # @param [Ticketbai::Nodes::InvoiceHeader] invoice_header
       # @param [Ticketbai::Nodes::Software] software
       ###
       def initialize(**args)
-        @issuer = args[:issuer]
-        @invoice_header = args[:invoice_header]
-        @software = args[:software]
+        super(args)
       end
 
       # @return [Nokogiri::XML::Builder]

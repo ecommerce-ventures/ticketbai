@@ -1,13 +1,11 @@
 module Ticketbai
   module Operations
     class Annulment < Operation
-      attr_reader :company_cert
-      # Sujetos > Emisor
-      attr_reader :issuing_company_nif, :issuing_company_name
-      # Factura > CabeceraFactura
-      attr_reader :invoice_serial, :invoice_number, :invoice_date
-
       OPERATION_NAME = :annulment
+
+      ATTRIBUTES = %i[issuing_company_nif issuing_company_name invoice_serial invoice_number invoice_date].freeze
+
+      attr_accessor(*ATTRIBUTES)
 
       ###
       # @param [String] issuing_company_nif NIF of the taxpayer's company
@@ -18,13 +16,7 @@ module Ticketbai
       # @param [String] company_cert The name of the certificate to be used for issuance
       ###
       def initialize(**args)
-        @issuing_company_nif = args[:issuing_company_nif]
-        @issuing_company_name = args[:issuing_company_name]
-        @invoice_serial = args[:invoice_serial]
-        @invoice_number = args[:invoice_number]
-        @invoice_date = args[:invoice_date]
-
-        @company_cert = Ticketbai.config.certificates[args[:company_cert]]
+        super(args)
       end
 
       def build_document

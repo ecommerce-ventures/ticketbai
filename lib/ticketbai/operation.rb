@@ -1,5 +1,15 @@
 module Ticketbai
   class Operation
+    attr_accessor :company_cert
+
+    def initialize(args)
+      self.class::ATTRIBUTES.each do |p|
+        instance_variable_set "@#{p}", args[p]
+      end
+
+      @company_cert = Ticketbai.config.certificates[args[:company_cert]]
+    end
+
     ###
     # Creates the Ticketbai operation by doing the following:
     # 1. Build the document
