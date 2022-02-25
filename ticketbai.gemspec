@@ -31,13 +31,13 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'digest-crc'
+  spec.add_dependency 'digest-crc', '0.6.4'
   spec.add_dependency 'faraday', '~> 1.9.0'
   spec.add_dependency 'nokogiri', '~> 1.12.0'
 
-  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop', '~> 1.25'
   spec.add_development_dependency 'webmock', '~> 3.5'
 
   # For more information and examples about making a new gem, checkout our
