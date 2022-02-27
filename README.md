@@ -47,7 +47,32 @@ ticketbai:
 ```
 
 ## Usage
-TODO
+The supported TicketBAI operations are: issuance, annulment and issuance unsigned.
+
+###### Issuance operation ######
+```
+params = {
+  company_cert: 'my_certificate_name',
+  issuing_company_nif: 'B34576372',
+  issuing_company_name: 'FooBar SL',
+  invoice_serial: '2022',
+  invoice_number: '10001',
+  invoice_date: '11-01-2022',
+  invoice_time: '13:05:22',
+  invoice_description: 'La descripción de la factura',
+  invoice_total: 12.21,
+  invoice_vat_key: '01',
+  invoice_amount: 11.0,
+  invoice_vat: 21.0,
+  invoice_vat_total: 2.31,
+  simplified_invoice: false
+}
+
+Ticketbai::Operations::Issuance.new(params).create
+```
+If everything is ok, the response of `Ticketbai::Operations::Issuance.new(params).create` is a Hash with two keys:
+- xml_doc: The signed TicketBAI XML string.
+- signature_value: The first 100 characters of the signature value needed for the chaining of TicketBAI files.
 
 ## Contributing
 
