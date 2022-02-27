@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'digest-crc', '0.6.4'
   spec.add_dependency 'faraday', '~> 1.9.0'
-  spec.add_dependency 'nokogiri', '~> 1.12.0'
+  spec.add_dependency 'nokogiri', '~> 1.13.0'
 
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
