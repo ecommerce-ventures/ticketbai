@@ -49,9 +49,9 @@ ticketbai:
 ## Usage
 The supported TicketBAI operations are: issuance, annulment and issuance unsigned.
 
-###### Issuance operation ######
+#### Issuance operation
 ```
-params = {
+Ticketbai::Operations::Issuance.new(
   company_cert: 'my_certificate_name',
   issuing_company_nif: 'B34576372',
   issuing_company_name: 'FooBar SL',
@@ -65,14 +65,38 @@ params = {
   invoice_amount: 11.0,
   invoice_vat: 21.0,
   invoice_vat_total: 2.31,
-  simplified_invoice: false
-}
-
-Ticketbai::Operations::Issuance.new(params).create
+  simplified_invoice: true
+).create
 ```
 If everything is ok, the response of `Ticketbai::Operations::Issuance.new(params).create` is a Hash with two keys:
 - xml_doc: The signed TicketBAI XML string.
 - signature_value: The first 100 characters of the signature value needed for the chaining of TicketBAI files.
+
+#### Annulment operation
+```
+Ticketbai::Operations::Annulment.new(
+  issuing_company_nif: 'B12345678',
+  issuing_company_name: 'Test SL',
+  invoice_serial: '2022',
+  invoice_number: '000002',
+  invoice_date: '10-11-2022',
+  company_cert: 'my_certificate_name'
+).create
+```  
+
+#### API Upload
+
+Sending the TicketBAI files to the LROE is done by executing the following request to the API:
+```
+Ticketbai::Api::Request.new(
+  issued_invoices: xml_doc,
+  nif: 'B34576372',
+  company_name: 'FooBar SL',
+  certificate_name: 'my_certificate_name',
+  year: '2022',
+  operation: :issuance
+).execute
+```
 
 ## Contributing
 
