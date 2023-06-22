@@ -15,13 +15,11 @@ Then run:
 bundle install
 ```
 
-And then execute:
-
-    $ bundle install
-
 Or install it yourself as:
 
-    $ gem install ticketbai
+```bash
+gem install ticketbai
+```
 
 ## Configuration
 
